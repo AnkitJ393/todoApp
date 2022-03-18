@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'todoapp';
+  list:any[]=[] ;
+  constructor(){
+
+  }
+  addtask(task:string){
+    this.list.push({id:this.list.length,name:task})
+  }
+
+  delete(item:number){
+    // console.log(id)
+   this.list= this.list.filter(id=>id.id!=item);
+  }
 }
