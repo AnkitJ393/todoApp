@@ -1,8 +1,2 @@
-<h1>{{title}}</h1>
 
-<input type="text"  (keyup.enter)="addtask(task.value)"  placeholder="Enter new task" #task>
-<button  type="submit" (click)="addtask(task.value)">Add task</button>
-
-<ul *ngFor="let item of list">
-    <li >{{item.name}} <button (click)="delete(item.id)">Delete</button></li>
-</ul>
+<router-outlet></router-outlet>
