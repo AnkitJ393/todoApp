@@ -22,7 +22,6 @@ export class HeaderComponent implements OnInit {
 
   addtodo():void{
     this.todoservice.setTodo(this.text);
-    console.log(this.text);
     this.text=' ';
     
   }

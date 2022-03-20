@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { TodoComponent } from './component/todo/todo.component';
 import { HeaderComponent } from './component/header/header.component';
 import { MainComponent } from './component/main/main.component';
+import { SingletodoComponent } from './component/singletodo/singletodo.component';
+import { FooterComponent } from './component/footer/footer.component';
 
 const rout:Routes=[
   {path:'', component:TodoComponent}
@@ -15,7 +17,9 @@ const rout:Routes=[
   declarations: [
     TodoComponent,
     HeaderComponent,
-    MainComponent
+    MainComponent,
+    SingletodoComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
