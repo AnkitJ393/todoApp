@@ -3,5 +3,16 @@
         <strong>{{activeCount$|async}}</strong>
         {{itemsLest$|async}}
     </span>
+    <ul class="filters">
+        <li>
+            <a href="/" [ngClass]="{selected:(filte$|async) ===filterEnum.all}" (click)="changeFilter($event,filterEnum.all)">ALL</a>
+        </li>
+        <li>
+            <a href="/" [ngClass]="{selected:(filte$|async) === filterEnum.active}" (click)="changeFilter($event,filterEnum.active)">Active</a>
+        </li>
+        <li>
+            <a href="/" [ngClass]="{selected:(filte$|async) ===filterEnum.completed}" (click)="changeFilter($event,filterEnum.completed)">Completed</a>
+        </li>
+    </ul>
 
 </footer>

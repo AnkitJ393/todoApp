@@ -11,9 +11,10 @@ import { FilterEnum } from '../../types/filter.enum';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent  {
-  visibleTodo$:Observable<TodoInterface[]>
-  notodosclass$:Observable<boolean>
-  isAlltodoSelected$:Observable<boolean>
+  visibleTodo$:Observable<TodoInterface[]>;
+  notodosclass$:Observable<boolean>;
+  isAlltodoSelected$:Observable<boolean>;
+  editingId: string | null = null;
 
   constructor(private todoservice:TodoService) { 
     //to check if theere are no todo then main blocks comes empty
@@ -40,12 +41,19 @@ export class MainComponent  {
         return todos
       })
     )
-
   }
+
   toggleAlltodos(event:Event):void{
    const target=event.target as HTMLInputElement;
    this.todoservice.toggleAll(target.checked);
   }
+
+  setEditingId(editingId: string | null): void {
+    console.log(editingId,'editingId');
+    this.editingId = editingId;
+    
+  }
+
 }
 
  

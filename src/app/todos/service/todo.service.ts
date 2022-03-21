@@ -1,6 +1,6 @@
+import { FilterEnum } from './../types/filter.enum';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { FilterEnum } from '../types/filter.enum';
+import { BehaviorSubject, retry } from 'rxjs';
 import { TodoInterface } from '../types/todo.interface';
 
 @Injectable({
@@ -30,6 +30,45 @@ export class TodoService {
         isCompleted
       };
     })
-    console.log(updatedtodo,'updatetodo');
+   
+  }
+
+  changefilter(filtername:FilterEnum):void{
+    this.filter$.next(filtername);
+  }
+
+  changetodo(id:string,text:string):void{
+    const updatedtodo=this.todo$.getValue().map((todo)=>{
+      if(todo.id===id){
+        return{
+          ...todo,
+          text
+        };
+      }
+      return todo;
+    });
+    this.todo$.next(updatedtodo);
+    console.log('changed todo')
+  }
+
+  removetodo(id:string):void{
+    const  updatedtodo=this.todo$.getValue().filter((todo)=>todo.id!==id)
+    this.todo$.next(updatedtodo);
+    console.log("removetodo")
+  }  
+
+  toggletodo(id:string):void{
+    const updatedtodo=this.todo$.getValue().map((todo)=>{
+      if(id==todo.id){
+        return{
+          ...todo,
+          isCompleted: !todo.isCompleted,
+        }
+      }
+      return todo
+      }
+
+      )
+      this.todo$.next(updatedtodo);
   }
 }

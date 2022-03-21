@@ -21,8 +21,11 @@ export class HeaderComponent implements OnInit {
   }
 
   addtodo():void{
+    if(this.text.length!=0){
     this.todoservice.setTodo(this.text);
     this.text=' ';
+    }
+    console.log(this.text.length)
     
   }
 
